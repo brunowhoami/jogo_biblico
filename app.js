@@ -3,7 +3,7 @@ let erros = 0;
 let perguntas = [];
 let perguntaAtual = 0;
 let nivelDificuldade = "facil"; // Nível de dificuldade padrão
-const totalPerguntas = 5;
+const totalPerguntas = 7;
 
 function exibirMensagemNaTela(tag, texto) {
     let campo = document.querySelector(tag);
@@ -48,7 +48,18 @@ function verificarResposta() {
     const respostaUsuario = removerAcentos(document.getElementById("resposta").value.trim().toLowerCase());
     const respostaCorreta = removerAcentos(perguntas[perguntaAtual].resposta.toLowerCase());
 
-    if (respostaUsuario === respostaCorreta) {
+    const palavrasCorretas = respostaCorreta.split("");
+    let palavrasCorretasEncontradas = 0;
+
+        palavrasCorretas.forEach(palavra => {
+            if(respostaUsuario.includes(palavra)){
+                palavrasCorretasEncontradas++;
+            }
+        }); 
+
+    const percentPalavrasCorretas = palavrasCorretasEncontradas / palavrasCorretas.length;
+
+    if (percentPalavrasCorretas >= 0.5) {
         document.getElementById("resultado").innerText = "Resposta correta!";
         acertos++;
     } else {
