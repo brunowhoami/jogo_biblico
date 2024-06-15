@@ -151,3 +151,25 @@ button:disabled {
     padding: 1rem;
   }
 }
+
+@media screen and (max-width: 300px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    .container__botao {
+        font-size: 16px;
+    }
+
+    .texto__paragrafo {
+        font-size: 16px;
+    }
+
+    #botaoIniciar {
+        font-size: 22px;
+    }
+
+    #resposta {
+        font-size: 22px;
+    }
+}
