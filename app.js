@@ -59,7 +59,7 @@ function verificarResposta() {
 
     const percentPalavrasCorretas = palavrasCorretasEncontradas / palavrasCorretas.length;
 
-    if (percentPalavrasCorretas >= 0.5) {
+    if (percentPalavrasCorretas >= 0.7) {
         document.getElementById("resultado").innerText = "Resposta correta!";
         acertos++;
     } else {
@@ -98,4 +98,16 @@ function mostrarSelecaoDificuldade() {
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("botaoIniciar").addEventListener("click", selecionarDificuldade);
     mostrarSelecaoDificuldade();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    carregarPerguntas();
+
+    // Adicionar evento de tecla ao campo de entrada de resposta
+    document.getElementById("resposta").addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            event.preventDefault(); // Evita a submissão do formulário ao pressionar "Enter"
+            verificarResposta(); // Chama a função verificarResposta() ao pressionar "Enter"
+        }
+    });
 });
